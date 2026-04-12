@@ -52,7 +52,6 @@ function M.get_env_vars(ctx)
             if file.exists(name) then
                 if name ~= "pyproject.toml" or strings.contains(file.read(name) or "", "[tool.pixi]") then
                     table.insert(watch_files, name)
-                    break
                 end
             end
         end

@@ -79,7 +79,7 @@ MISE_ENV=production mise env
 
 ## Manifest Detection
 
-When `manifest_path` is not set, pixi automatically detects the manifest. The plugin watches for:
+When `manifest_path` is not set, the plugin searches for pixi config files in the current directory. The following files are recognized:
 
 - `pixi.toml`
 - `mojoproject.toml`
@@ -89,12 +89,13 @@ Plain `pyproject.toml` files without `[tool.pixi]` are ignored.
 
 ## Cache Invalidation
 
-The plugin watches two files for changes:
+The plugin watches for changes to invalidate its cache:
 
-- The detected (or configured) manifest file
+- **Auto-detect mode**: all recognized manifest files that are present (`pixi.toml`, `mojoproject.toml`, and `pyproject.toml` with `[tool.pixi]`)
+- **`manifest_path` set**: only the specified file is watched
 - `pixi.lock` in the same directory, if it exists
 
-Any change to either file clears the cached environment.
+Any change to a watched file clears the cached environment.
 
 ## Known Limitations
 
