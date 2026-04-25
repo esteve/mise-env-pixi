@@ -250,7 +250,7 @@ function M.get_env_vars(ctx)
   local pixi_bin = ctx.options.pixi_bin or "pixi"
   local environment = ctx.options.environment
   local manifest_path = ctx.options.manifest_path
-  local activation_scripts = ctx.options.activation_scripts or true
+  local activation_scripts = ctx.options.activation_scripts ~= false
 
   local command = pixi_bin .. " shell-hook --json"
   if manifest_path then
