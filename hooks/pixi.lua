@@ -345,6 +345,16 @@ function M.get_env_vars(ctx)
     table.insert(watch_files, "pixi.lock")
   end
 
+  -- Watch activation scripts for changes
+  local scripts = data["activation_scripts"]
+  if type(scripts) == "table" then
+    for _, script_path in ipairs(scripts) do
+      if file.exists(script_path) then
+        table.insert(watch_files, script_path)
+      end
+    end
+  end
+
   return env_vars, watch_files
 end
 

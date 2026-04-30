@@ -104,6 +104,7 @@ The plugin watches for changes to invalidate its cache:
 - **Auto-detect mode**: all recognized manifest files that are present (`pixi.toml`, `mojoproject.toml`, and `pyproject.toml` with `[tool.pixi]`)
 - **`manifest_path` set**: only the specified file is watched
 - `pixi.lock` in the same directory, if it exists
+- Activation scripts listed in `pixi.toml`, if they exist
 
 Any change to a watched file clears the cached environment.
 
