@@ -108,6 +108,14 @@ The plugin watches for changes to invalidate its cache:
 
 Any change to a watched file clears the cached environment.
 
+> **Performance tip**: Enable mise's built-in env cache to avoid running `pixi shell-hook` on
+> every directory entry. Add to `~/.config/mise/config.toml`:
+> ```toml
+> [settings]
+> env_cache = true
+> ```
+> With this enabled, subsequent directory entries are instant when no watched files changed.
+
 ## Activation Scripts
 
 Pixi supports custom activation scripts defined in `pixi.toml` under the `[activation]` section:
